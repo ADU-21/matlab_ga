@@ -1,8 +1,8 @@
-%%fitness3 for stable
+%%资源波动成本
 function y = fitness3(T)
-C1 = 2;   %% 可更改
-C2 = 3;   %%可更改
-R = randi([30, 40], 1, T);
+C1 = 2;   %% 变动成本，可更改
+C2 = 3;   %% 变动成本，可更改
+R = randi([30, 40], 1, T); %% 每日资源需求量
 R1 = 1:T;
 for t = 1:T
     R1(t) = R(t) + rid(t, R, T); %% 
