@@ -1,13 +1,14 @@
 %%资源波动成本
-function y = fitness3(T)
+function y = fitness3(numberOfProcessForSingleProject, numberOfProject)
+totalProjectTime = fitness1(numberOfProcessForSingleProject, numberOfProject);
 C1 = 2;   %% 变动成本，可更改
 C2 = 3;   %% 变动成本，可更改
-R = randi([30, 40], 1, T); %% 每日资源需求量
-R1 = 1:T;
-for t = 1:T
-    R1(t) = R(t) + rid(t, R, T); %% 
+R = randi([30, 40], 1, totalProjectTime); %% 每日资源需求量
+R1 = 1:totalProjectTime;
+for t = 1:totalProjectTime
+    R1(t) = R(t) + rid(t, R, totalProjectTime); %% 
 end
-y = 1/min(RFC_rrh(C2, T, R), RFC_rid(C1, C2, T, R, R1));
+y = 1/min(RFC_rrh(C2, totalProjectTime, R), RFC_rid(C1, C2, totalProjectTime, R, R1));
 end
 
 function y = RFC_rrh(C2, T, R)
